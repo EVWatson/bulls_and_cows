@@ -159,4 +159,77 @@ public class ScoreCalculatorTest {
 
     }
 
+    @Test
+    public void whenTheGuessedDigitMatchesAComputerDigitInADifferentPositionPlayerGetsACow(){
+        ScoreCalculator scoreCalculator = new ScoreCalculator();
+
+        ArrayList<Integer> computerNumbers = new ArrayList<>();
+        computerNumbers.add(1);
+        computerNumbers.add(2);
+        computerNumbers.add(3);
+        computerNumbers.add(4);
+
+        ArrayList<Integer> playerGuess = new ArrayList<>();
+        playerGuess.add(2);
+        playerGuess.add(9);
+        playerGuess.add(6);
+        playerGuess.add(7);
+
+        int expectedResult = 1;
+        int actualResult = scoreCalculator.calculateCows(computerNumbers, playerGuess);
+
+
+        assertEquals(expectedResult, actualResult);
+
+    }
+
+    @Test
+    public void whenTheGuessedDigitsMatchesTwoComputerDigitInDifferentPositionsPlayerGetsTwoCows(){
+        ScoreCalculator scoreCalculator = new ScoreCalculator();
+
+        ArrayList<Integer> computerNumbers = new ArrayList<>();
+        computerNumbers.add(1);
+        computerNumbers.add(2);
+        computerNumbers.add(3);
+        computerNumbers.add(4);
+
+        ArrayList<Integer> playerGuess = new ArrayList<>();
+        playerGuess.add(2);
+        playerGuess.add(9);
+        playerGuess.add(4);
+        playerGuess.add(5);
+
+        int expectedResult = 2;
+        int actualResult = scoreCalculator.calculateCows(computerNumbers, playerGuess);
+
+
+        assertEquals(expectedResult, actualResult);
+
+    }
+
+    @Test
+    public void whenTheGuessedDigitMatchesAComputerDigitInTheSamePositionPlayerGetsNoCows(){
+        ScoreCalculator scoreCalculator = new ScoreCalculator();
+
+        ArrayList<Integer> computerNumbers = new ArrayList<>();
+        computerNumbers.add(1);
+        computerNumbers.add(2);
+        computerNumbers.add(3);
+        computerNumbers.add(4);
+
+        ArrayList<Integer> playerGuess = new ArrayList<>();
+        playerGuess.add(5);
+        playerGuess.add(2);
+        playerGuess.add(6);
+        playerGuess.add(7);
+
+        int expectedResult = 0;
+        int actualResult = scoreCalculator.calculateCows(computerNumbers, playerGuess);
+
+
+        assertEquals(expectedResult, actualResult);
+
+    }
+
+
 }
