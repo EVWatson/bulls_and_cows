@@ -87,4 +87,76 @@ public class ScoreCalculatorTest {
 
     }
 
+    @Test
+    public void whenTheFirstGuessedNumberMatchesTheFirstComputerNumberPlayerGetsABull(){
+        ScoreCalculator scoreCalculator = new ScoreCalculator();
+
+        ArrayList<Integer> computerNumbers = new ArrayList<>();
+        computerNumbers.add(1);
+        computerNumbers.add(2);
+        computerNumbers.add(3);
+        computerNumbers.add(4);
+
+        ArrayList<Integer> playerGuess = new ArrayList<>();
+        playerGuess.add(1);
+        playerGuess.add(5);
+        playerGuess.add(6);
+        playerGuess.add(7);
+
+        int expectedResult = 1;
+        int actualResult = scoreCalculator.calculateBulls(computerNumbers, playerGuess);
+
+
+        assertEquals(expectedResult, actualResult);
+
+    }
+
+    @Test
+    public void whenTheFirstTwoGuessedDigitsMatchesTheFirstTwoComputerDigitsPlayerGetsTwoBull(){
+        ScoreCalculator scoreCalculator = new ScoreCalculator();
+
+        ArrayList<Integer> computerNumbers = new ArrayList<>();
+        computerNumbers.add(1);
+        computerNumbers.add(2);
+        computerNumbers.add(3);
+        computerNumbers.add(4);
+
+        ArrayList<Integer> playerGuess = new ArrayList<>();
+        playerGuess.add(1);
+        playerGuess.add(2);
+        playerGuess.add(6);
+        playerGuess.add(7);
+
+        int expectedResult = 2;
+        int actualResult = scoreCalculator.calculateBulls(computerNumbers, playerGuess);
+
+
+        assertEquals(expectedResult, actualResult);
+
+    }
+
+    @Test
+    public void whenTheSecondGuessedDigitsMatchesTheSecondComputerDigitPlayerGetsABull(){
+        ScoreCalculator scoreCalculator = new ScoreCalculator();
+
+        ArrayList<Integer> computerNumbers = new ArrayList<>();
+        computerNumbers.add(1);
+        computerNumbers.add(2);
+        computerNumbers.add(3);
+        computerNumbers.add(4);
+
+        ArrayList<Integer> playerGuess = new ArrayList<>();
+        playerGuess.add(9);
+        playerGuess.add(2);
+        playerGuess.add(6);
+        playerGuess.add(7);
+
+        int expectedResult = 1;
+        int actualResult = scoreCalculator.calculateBulls(computerNumbers, playerGuess);
+
+
+        assertEquals(expectedResult, actualResult);
+
+    }
+
 }
