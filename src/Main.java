@@ -1,6 +1,20 @@
+import java.util.ArrayList;
+
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        ScoreCalculator scoreCalculator = new ScoreCalculator();
+        NumberGenerator numberGenerator = new NumberGenerator();
+
+        ArrayList<Integer> computerNumbers = numberGenerator.generateNumber();
+
+        ArrayList<Integer> playerGuess = new ArrayList<>();
+        playerGuess.add(1);
+        playerGuess.add(5);
+        playerGuess.add(7);
+        playerGuess.add(9);
+
+        scoreCalculator.hasPlayerWon(computerNumbers, playerGuess);
+
     }
 }
