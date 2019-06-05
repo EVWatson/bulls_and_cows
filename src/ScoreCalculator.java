@@ -20,4 +20,16 @@ public class ScoreCalculator {
         }
         return bull;
     }
+
+    public int calculateCows(ArrayList<Integer> computerNumbers, ArrayList<Integer> playerGuess) {
+        int cow = 0;
+        for(int digit = 0; digit < playerGuess.size(); digit++) {
+            if (computerNumbers.contains(playerGuess.get(digit)) &&
+                    !computerNumbers.get(digit).equals(playerGuess.get(digit))) {
+                cow++;
+            }
+        }
+        return cow;
+    }
+
 }
