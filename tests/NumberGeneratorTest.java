@@ -19,12 +19,12 @@ public class NumberGeneratorTest {
 
 //    TODO: add this test in later:
 
-    @Test
-    public void generateNumberReturnsNewArrayListWithNoDigitDuplication(){
-        NumberGenerator numberGenerator = new NumberGenerator();
-
-        assert
-
-    }
+//    @Test
+//    public void generateNumberReturnsNewArrayListWithNoDigitDuplication(){
+//        NumberGenerator numberGenerator = new NumberGenerator();
+//
+//        assert
+//
+//    }
 
 }
