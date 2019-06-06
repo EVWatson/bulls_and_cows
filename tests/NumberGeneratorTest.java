@@ -25,8 +25,11 @@ public class NumberGeneratorTest {
 
         ArrayList<Integer> randomDigits = numberGenerator.generateFourDigitRandomNumber();
 
-        int i = randomDigits.size();
-        assertFalse(randomDigits.contains(i) && randomDigits.contains(i) && randomDigits.contains(i) && randomDigits.contains(i));
+        assertFalse(
+                randomDigits.get(0).equals(randomDigits.get(1)) && randomDigits.get(0).equals(randomDigits.get(2)) && randomDigits.get(0).equals(randomDigits.get(3)) &&
+                randomDigits.get(1).equals(randomDigits.get(0)) && randomDigits.get(1).equals(randomDigits.get(2)) && randomDigits.get(1).equals(randomDigits.get(3))&&
+                randomDigits.get(2).equals(randomDigits.get(0)) && randomDigits.get(2).equals(randomDigits.get(1)) && randomDigits.get(2).equals(randomDigits.get(3)) &&
+                randomDigits.get(3).equals(randomDigits.get(0)) && randomDigits.get(3).equals(randomDigits.get(1)) && randomDigits.get(3).equals(randomDigits.get(2)));
 
     }
 

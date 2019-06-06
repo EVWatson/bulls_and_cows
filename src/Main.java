@@ -6,8 +6,9 @@ public class Main {
         ScoreCalculator scoreCalculator = new ScoreCalculator();
         NumberGenerator numberGenerator = new NumberGenerator();
 
+        ArrayList<Integer> randomDigits = numberGenerator.generateFourDigitRandomNumber();
 
-        System.out.println(numberGenerator.generateFourDigitRandomNumber());
+        System.out.println(randomDigits);
 
 
 
@@ -17,7 +18,7 @@ public class Main {
         playerGuess.add(7);
         playerGuess.add(9);
 
-//        scoreCalculator.hasPlayerWon(computerNumbers, playerGuess);
+        scoreCalculator.hasPlayerWon(randomDigits, playerGuess);
 
     }
 }
