@@ -6,25 +6,8 @@ public class Main {
         ScoreCalculator scoreCalculator = new ScoreCalculator();
         NumberGenerator numberGenerator = new NumberGenerator();
 
-//        ArrayList<Double> computerNumbers = numberGenerator.getRandomNumber(1, 9);
 
-
-// uses random class, generates single digit
-//         int randomNumber = numberGenerator.generateRandomNumber(1, 9);
-//        System.out.println(randomNumber);
-
-
-// uses random class, generates single digit
-
-//         int n = numberGenerator.generateNewRandomNumber(1, 9);
-//        System.out.println(n);
-//
-//
-//        System.out.println(numberGenerator.gettingCloser());
-
-        ArrayList<Integer> digits = numberGenerator.getDigits();
-
-        System.out.println(numberGenerator.generateRandomDigits(digits));
+        System.out.println(numberGenerator.generateFourDigitRandomNumber());
 
 
 

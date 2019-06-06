@@ -7,24 +7,27 @@ import static org.junit.Assert.*;
 public class NumberGeneratorTest {
 
     @Test
-    public void generateNumberReturnsNewArrayListWithFourDigits(){
+    public void generateFourDigitRandomNumberReturnsNewArrayListWithFourDigits(){
         NumberGenerator numberGenerator = new NumberGenerator();
 
         int expectedResult = 4;
 
-        int actualResult = numberGenerator.generateNumber().size();
+        int actualResult = numberGenerator.generateFourDigitRandomNumber().size();
 
         assertEquals(expectedResult, actualResult);
     }
 
-//    TODO: add this test in later:
 
-//    @Test
-//    public void generateNumberReturnsNewArrayListWithNoDigitDuplication(){
-//        NumberGenerator numberGenerator = new NumberGenerator();
-//
-//        assert
-//
-//    }
+
+    @Test
+    public void generateFourDigitRandomNumberReturnsNewArrayListWithNoDigitDuplication(){
+        NumberGenerator numberGenerator = new NumberGenerator();
+
+        ArrayList<Integer> randomDigits = numberGenerator.generateFourDigitRandomNumber();
+
+        int i = randomDigits.size();
+        assertFalse(randomDigits.contains(i) && randomDigits.contains(i) && randomDigits.contains(i) && randomDigits.contains(i));
+
+    }
 
 }
