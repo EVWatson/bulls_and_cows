@@ -27,9 +27,8 @@ public class NumberGeneratorTest {
 
         assertFalse(
                 randomDigits.get(0).equals(randomDigits.get(1)) && randomDigits.get(0).equals(randomDigits.get(2)) && randomDigits.get(0).equals(randomDigits.get(3)) &&
-                randomDigits.get(1).equals(randomDigits.get(0)) && randomDigits.get(1).equals(randomDigits.get(2)) && randomDigits.get(1).equals(randomDigits.get(3))&&
-                randomDigits.get(2).equals(randomDigits.get(0)) && randomDigits.get(2).equals(randomDigits.get(1)) && randomDigits.get(2).equals(randomDigits.get(3)) &&
-                randomDigits.get(3).equals(randomDigits.get(0)) && randomDigits.get(3).equals(randomDigits.get(1)) && randomDigits.get(3).equals(randomDigits.get(2)));
+                randomDigits.get(1).equals(randomDigits.get(2)) && randomDigits.get(1).equals(randomDigits.get(3))&& randomDigits.get(2).equals(randomDigits.get(3))
+        );
 
     }
 
