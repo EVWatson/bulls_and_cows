@@ -3,22 +3,26 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-        ScoreCalculator scoreCalculator = new ScoreCalculator();
+
         NumberGenerator numberGenerator = new NumberGenerator();
-
-        ArrayList<Integer> randomDigits = numberGenerator.generateFourDigitRandomNumber();
-
-        System.out.println(randomDigits);
+        PlayerImput playerImput = new PlayerImput();
+        ScoreCalculator scoreCalculator = new ScoreCalculator();
 
 
 
-        ArrayList<Integer> playerGuess = new ArrayList<>();
-        playerGuess.add(1);
-        playerGuess.add(5);
-        playerGuess.add(7);
-        playerGuess.add(9);
+//        ArrayList<Integer> randomDigits = numberGenerator.generateFourDigitRandomNumber();
 
-        scoreCalculator.hasPlayerWon(randomDigits, playerGuess);
+        ArrayList<Integer> computerDigits = new ArrayList<>();
+        computerDigits.add(1);
+        computerDigits.add(5);
+        computerDigits.add(6);
+        computerDigits.add(3);
+
+        ArrayList<Integer> playerGuess = playerImput.getPlayerGuess();
+
+
+        System.out.println(scoreCalculator.calculateScore(playerGuess, computerDigits));
+
 
     }
 }
