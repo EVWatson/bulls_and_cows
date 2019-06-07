@@ -112,7 +112,7 @@ public class ScoreCalculatorTest {
     }
 
     @Test
-    public void whenTheFirstTwoGuessedDigitsMatchesTheFirstTwoComputerDigitsPlayerGetsTwoBull(){
+    public void whenTheFirstTwoGuessedDigitsMatchesTheFirstTwoComputerDigitsPlayerGetsTwoBulls(){
         ScoreCalculator scoreCalculator = new ScoreCalculator();
 
         ArrayList<Integer> computerNumbers = new ArrayList<>();
