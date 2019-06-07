@@ -24,7 +24,7 @@ public class NumberGeneratorTest {
         ArrayList<Integer> randomDigits = numberGenerator.generateFourDigitRandomNumber();
 
         assertTrue(randomDigits.contains(1) || randomDigits.contains(2) || randomDigits.contains(3) || randomDigits.contains(4) ||
-                randomDigits.contains(5) || randomDigits.contains(6) && randomDigits.contains(7) || randomDigits.contains(8) || randomDigits.contains(9)
+                randomDigits.contains(5) || randomDigits.contains(6) || randomDigits.contains(7) || randomDigits.contains(8) || randomDigits.contains(9)
         );
     }
 
