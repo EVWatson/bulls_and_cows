@@ -28,7 +28,8 @@ public class ScoreCalculator {
         for(int digit = 0; digit < playerGuess.size(); digit++) {
             if (playerGuess.get(digit).equals(computerNumbers.get(digit))) {
                 this.bulls++;
-            }else if (computerNumbers.contains(playerGuess.get(digit)) &&
+            }
+            if (computerNumbers.contains(playerGuess.get(digit)) &&
                     !computerNumbers.get(digit).equals(playerGuess.get(digit))) {
                 this.cows++;
             }
