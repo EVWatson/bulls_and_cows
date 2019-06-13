@@ -1,16 +1,31 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class NumberGenerator {
 
-
-    public ArrayList<Integer> generateNumber() {
-        ArrayList<Integer> fourDigitNumber = new ArrayList<>();
-        fourDigitNumber.add(1);
-        fourDigitNumber.add(2);
-        fourDigitNumber.add(3);
-        fourDigitNumber.add(4);
+    private ArrayList<Integer> digits;
 
 
-        return fourDigitNumber;
+    public NumberGenerator(){
+        this.digits = makeListOfDigits();
+    }
+
+    private ArrayList<Integer> makeListOfDigits() {
+        this.digits = new ArrayList<>();
+        for(int i = 0; i < 9; i++){
+            this.digits.add(i+1);
+        }
+        Collections.shuffle(this.digits);
+        return this.digits;
+    }
+
+
+    public ArrayList<Integer> generateFourDigitRandomNumber() {
+        ArrayList<Integer> fourDigits = new ArrayList<>();
+        for (int i = 0; i < 4; i++) {
+            Integer number = this.digits.get(i);
+            fourDigits.add(number);
+        }
+        return fourDigits;
     }
 }

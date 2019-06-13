@@ -3,18 +3,34 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-        ScoreCalculator scoreCalculator = new ScoreCalculator();
+
         NumberGenerator numberGenerator = new NumberGenerator();
+        PlayerInput playerInput = new PlayerInput();
+        ScoreCalculator scoreCalculator = new ScoreCalculator();
+        ResultPrinter resultPrinter = new ResultPrinter();
 
-        ArrayList<Integer> computerNumbers = numberGenerator.generateNumber();
 
-        ArrayList<Integer> playerGuess = new ArrayList<>();
-        playerGuess.add(1);
-        playerGuess.add(5);
-        playerGuess.add(7);
-        playerGuess.add(9);
+        ArrayList<Integer> randomDigits = numberGenerator.generateFourDigitRandomNumber();
+        ArrayList<Integer> d = new ArrayList<>();
+        d.add(1);
+        d.add(2);
+        d.add(3);
+        d.add(4);
 
-        scoreCalculator.hasPlayerWon(computerNumbers, playerGuess);
+
+        InstructionPrinter.printMessage(InstructionPrinter.START_GAME);
+        InstructionPrinter.printMessage(InstructionPrinter.ENTER_GUESS);
+//        ArrayList<Integer> playerGuess = playerInput.getPlayerGuess();
+        ArrayList<Integer> pg = new ArrayList<>();
+        pg.add(1);
+        pg.add(2);
+        pg.add(7);
+        pg.add(8);
+
+
+        System.out.println(scoreCalculator.calculateScore(d, pg));
+//        resultPrinter.printResult(result, bulls, cows);
+//        InstructionPrinter.printMessage();
 
     }
 }

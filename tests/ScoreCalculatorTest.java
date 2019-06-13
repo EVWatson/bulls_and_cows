@@ -23,12 +23,16 @@ public class ScoreCalculatorTest {
         playerGuess.add(3);
         playerGuess.add(4);
 
-        assertTrue(scoreCalculator.hasPlayerWon(computerNumbers, playerGuess));
+        String expectedResult = "Well done you won!";
+
+        String actualResult = scoreCalculator.calculateScore(playerGuess, computerNumbers);
+
+        assertEquals(expectedResult, actualResult);
 
     }
 
     @Test
-    public void whenGuessedNumberDoesNotMatchAnyComputerNumbersPlayerLoses(){
+    public void whenGuessedDigitsDoNotMatchAnyComputerDigitsPlayerLoses(){
         ScoreCalculator scoreCalculator = new ScoreCalculator();
 
         ArrayList<Integer> computerNumbers = new ArrayList<>();
@@ -43,47 +47,10 @@ public class ScoreCalculatorTest {
         playerGuess.add(5);
         playerGuess.add(5);
 
-        assertFalse(scoreCalculator.hasPlayerWon(computerNumbers, playerGuess));
+        String expectedResult = "Bad luck, you lose";
+        String actualResult = scoreCalculator.calculateScore(computerNumbers, playerGuess);
 
-    }
-
-    @Test
-    public void whenGuessedNumberMatchesTheFirstTwoComputerNumbersPlayerLoses(){
-        ScoreCalculator scoreCalculator = new ScoreCalculator();
-
-        ArrayList<Integer> computerNumbers = new ArrayList<>();
-        computerNumbers.add(1);
-        computerNumbers.add(2);
-        computerNumbers.add(7);
-        computerNumbers.add(9);
-
-        ArrayList<Integer> playerGuess = new ArrayList<>();
-        playerGuess.add(1);
-        playerGuess.add(2);
-        playerGuess.add(8);
-        playerGuess.add(6);
-
-        assertFalse(scoreCalculator.hasPlayerWon(computerNumbers, playerGuess));
-
-    }
-
-    @Test
-    public void whenGuessedNumberMatchesTheLastComputerNumberPlayerLoses(){
-        ScoreCalculator scoreCalculator = new ScoreCalculator();
-
-        ArrayList<Integer> computerNumbers = new ArrayList<>();
-        computerNumbers.add(1);
-        computerNumbers.add(2);
-        computerNumbers.add(7);
-        computerNumbers.add(9);
-
-        ArrayList<Integer> playerGuess = new ArrayList<>();
-        playerGuess.add(2);
-        playerGuess.add(3);
-        playerGuess.add(8);
-        playerGuess.add(9);
-
-        assertFalse(scoreCalculator.hasPlayerWon(computerNumbers, playerGuess));
+        assertEquals(expectedResult, actualResult);
 
     }
 
@@ -103,16 +70,15 @@ public class ScoreCalculatorTest {
         playerGuess.add(6);
         playerGuess.add(7);
 
-        int expectedResult = 1;
-        int actualResult = scoreCalculator.calculateBulls(computerNumbers, playerGuess);
-
+        String expectedResult = "Bulls received: "+1+"\n"+"Cows received: "+0;
+        String actualResult = scoreCalculator.calculateScore(computerNumbers, playerGuess);
 
         assertEquals(expectedResult, actualResult);
 
     }
 
     @Test
-    public void whenTheFirstTwoGuessedDigitsMatchesTheFirstTwoComputerDigitsPlayerGetsTwoBull(){
+    public void whenTheFirstTwoGuessedDigitsMatchesTheFirstTwoComputerDigitsPlayerGetsTwoBulls(){
         ScoreCalculator scoreCalculator = new ScoreCalculator();
 
         ArrayList<Integer> computerNumbers = new ArrayList<>();
@@ -127,9 +93,8 @@ public class ScoreCalculatorTest {
         playerGuess.add(6);
         playerGuess.add(7);
 
-        int expectedResult = 2;
-        int actualResult = scoreCalculator.calculateBulls(computerNumbers, playerGuess);
-
+        String expectedResult = "Bulls received: "+2+"\n"+"Cows received: "+0;
+        String actualResult = scoreCalculator.calculateScore(computerNumbers, playerGuess);
 
         assertEquals(expectedResult, actualResult);
 
@@ -151,8 +116,8 @@ public class ScoreCalculatorTest {
         playerGuess.add(6);
         playerGuess.add(7);
 
-        int expectedResult = 1;
-        int actualResult = scoreCalculator.calculateBulls(computerNumbers, playerGuess);
+        String expectedResult = "Bulls received: "+1+"\n"+"Cows received: "+0;
+        String actualResult = scoreCalculator.calculateScore(computerNumbers, playerGuess);
 
 
         assertEquals(expectedResult, actualResult);
@@ -175,8 +140,8 @@ public class ScoreCalculatorTest {
         playerGuess.add(6);
         playerGuess.add(7);
 
-        int expectedResult = 1;
-        int actualResult = scoreCalculator.calculateCows(computerNumbers, playerGuess);
+        String expectedResult = "Bulls received: "+0+"\n"+"Cows received: "+1;
+        String actualResult = scoreCalculator.calculateScore(computerNumbers, playerGuess);
 
 
         assertEquals(expectedResult, actualResult);
@@ -199,8 +164,8 @@ public class ScoreCalculatorTest {
         playerGuess.add(4);
         playerGuess.add(5);
 
-        int expectedResult = 2;
-        int actualResult = scoreCalculator.calculateCows(computerNumbers, playerGuess);
+        String expectedResult = "Bulls received: "+0+"\n"+"Cows received: "+2;
+        String actualResult = scoreCalculator.calculateScore(computerNumbers, playerGuess);
 
 
         assertEquals(expectedResult, actualResult);
@@ -208,7 +173,7 @@ public class ScoreCalculatorTest {
     }
 
     @Test
-    public void whenTheGuessedDigitMatchesAComputerDigitInTheSamePositionPlayerGetsNoCows(){
+    public void whenOneGuessedDigitsMatchOneComputerDigitInTheSamePositionAndOneInADifferentPositionPlayerGets1BullAnd1Cow(){
         ScoreCalculator scoreCalculator = new ScoreCalculator();
 
         ArrayList<Integer> computerNumbers = new ArrayList<>();
@@ -218,18 +183,17 @@ public class ScoreCalculatorTest {
         computerNumbers.add(4);
 
         ArrayList<Integer> playerGuess = new ArrayList<>();
+        playerGuess.add(1);
         playerGuess.add(5);
         playerGuess.add(2);
-        playerGuess.add(6);
         playerGuess.add(7);
 
-        int expectedResult = 0;
-        int actualResult = scoreCalculator.calculateCows(computerNumbers, playerGuess);
+        String expectedResult = "Bulls received: "+1+"\n"+"Cows received: "+1;
+        String actualResult = scoreCalculator.calculateScore(computerNumbers, playerGuess);
 
 
         assertEquals(expectedResult, actualResult);
 
     }
-
 
 }
