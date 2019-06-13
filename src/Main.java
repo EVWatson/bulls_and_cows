@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Main {
 
@@ -20,7 +21,7 @@ public class Main {
 
         InstructionPrinter.printMessage(InstructionPrinter.START_GAME);
         InstructionPrinter.printMessage(InstructionPrinter.ENTER_GUESS);
-//        ArrayList<Integer> playerGuess = playerInput.getPlayerGuess();
+        ArrayList<Integer> playerGuess = playerInput.getPlayerGuess();
         ArrayList<Integer> pg = new ArrayList<>();
         pg.add(1);
         pg.add(2);
@@ -28,8 +29,11 @@ public class Main {
         pg.add(8);
 
 
-        System.out.println(scoreCalculator.calculateScore(d, pg));
-//        resultPrinter.printResult(result, bulls, cows);
+//        System.out.println(scoreCalculator.calculateScore(randomDigits, playerGuess));
+        HashMap<String, Integer> score = scoreCalculator.calculateScore(randomDigits, playerGuess);
+        GameState gameState = scoreCalculator.determineWinOrLoss(score);
+        String result = resultPrinter.determineResult(gameState, score.get("bulls"), score.get("cows"));
+        resultPrinter.printResult(result);
 //        InstructionPrinter.printMessage();
 
     }

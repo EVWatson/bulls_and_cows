@@ -1,15 +1,25 @@
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import static org.junit.Assert.*;
 
 public class ScoreCalculatorTest {
 
+    private ScoreCalculator scoreCalculator;
+    private ResultPrinter resultPrinter;
+
+    @Before
+    public void setUp(){
+        this.scoreCalculator = new ScoreCalculator();
+        this.resultPrinter = new ResultPrinter();
+    }
+
 
     @Test
     public void whenGuessedNumbersMatchComputerGeneratedNumbersPlayerWins(){
-        ScoreCalculator scoreCalculator = new ScoreCalculator();
 
         ArrayList<Integer> computerNumbers = new ArrayList<>();
         computerNumbers.add(1);
@@ -25,16 +35,16 @@ public class ScoreCalculatorTest {
 
         String expectedResult = "Well done you won!";
 
-        String actualResult = scoreCalculator.calculateScore(playerGuess, computerNumbers);
+        HashMap<String, Integer> score = scoreCalculator.calculateScore(computerNumbers, playerGuess);
+        GameState gameState = scoreCalculator.determineWinOrLoss(score);
+        String actualResult = resultPrinter.determineResult(gameState, score.get("bulls"), score.get("cows"));
 
-        assertEquals(expectedResult, actualResult);
+       assertEquals(expectedResult, actualResult);
 
     }
 
     @Test
     public void whenGuessedDigitsDoNotMatchAnyComputerDigitsPlayerLoses(){
-        ScoreCalculator scoreCalculator = new ScoreCalculator();
-
         ArrayList<Integer> computerNumbers = new ArrayList<>();
         computerNumbers.add(1);
         computerNumbers.add(2);
@@ -48,7 +58,9 @@ public class ScoreCalculatorTest {
         playerGuess.add(5);
 
         String expectedResult = "Bad luck, you lose";
-        String actualResult = scoreCalculator.calculateScore(computerNumbers, playerGuess);
+        HashMap<String, Integer> score = scoreCalculator.calculateScore(computerNumbers, playerGuess);
+        GameState gameState = scoreCalculator.determineWinOrLoss(score);
+        String actualResult = resultPrinter.determineResult(gameState, score.get("bulls"), score.get("cows"));
 
         assertEquals(expectedResult, actualResult);
 
@@ -56,8 +68,6 @@ public class ScoreCalculatorTest {
 
     @Test
     public void whenTheFirstGuessedNumberMatchesTheFirstComputerNumberPlayerGetsABull(){
-        ScoreCalculator scoreCalculator = new ScoreCalculator();
-
         ArrayList<Integer> computerNumbers = new ArrayList<>();
         computerNumbers.add(1);
         computerNumbers.add(2);
@@ -70,17 +80,17 @@ public class ScoreCalculatorTest {
         playerGuess.add(6);
         playerGuess.add(7);
 
-        String expectedResult = "Bulls received: "+1+"\n"+"Cows received: "+0;
-        String actualResult = scoreCalculator.calculateScore(computerNumbers, playerGuess);
+        String expectedResult = "Number of Bulls = 1\n"+"Number of Cows = 0";
+
+        HashMap<String, Integer> score = scoreCalculator.calculateScore(computerNumbers, playerGuess);
+        GameState gameState = scoreCalculator.determineWinOrLoss(score);
+        String actualResult = resultPrinter.determineResult(gameState, score.get("bulls"), score.get("cows"));
 
         assertEquals(expectedResult, actualResult);
-
     }
 
     @Test
     public void whenTheFirstTwoGuessedDigitsMatchesTheFirstTwoComputerDigitsPlayerGetsTwoBulls(){
-        ScoreCalculator scoreCalculator = new ScoreCalculator();
-
         ArrayList<Integer> computerNumbers = new ArrayList<>();
         computerNumbers.add(1);
         computerNumbers.add(2);
@@ -93,12 +103,15 @@ public class ScoreCalculatorTest {
         playerGuess.add(6);
         playerGuess.add(7);
 
-        String expectedResult = "Bulls received: "+2+"\n"+"Cows received: "+0;
-        String actualResult = scoreCalculator.calculateScore(computerNumbers, playerGuess);
+        String expectedResult = "Number of Bulls = 2\n"+"Number of Cows = 0";
+        HashMap<String, Integer> score = scoreCalculator.calculateScore(computerNumbers, playerGuess);
+        GameState gameState = scoreCalculator.determineWinOrLoss(score);
+        String actualResult = resultPrinter.determineResult(gameState, score.get("bulls"), score.get("cows"));
 
         assertEquals(expectedResult, actualResult);
-
     }
+
+
 
     @Test
     public void whenTheSecondGuessedDigitsMatchesTheSecondComputerDigitPlayerGetsABull(){
@@ -116,9 +129,10 @@ public class ScoreCalculatorTest {
         playerGuess.add(6);
         playerGuess.add(7);
 
-        String expectedResult = "Bulls received: "+1+"\n"+"Cows received: "+0;
-        String actualResult = scoreCalculator.calculateScore(computerNumbers, playerGuess);
-
+        String expectedResult = "Number of Bulls = 1\n"+"Number of Cows = 0";
+        HashMap<String, Integer> score = scoreCalculator.calculateScore(computerNumbers, playerGuess);
+        GameState gameState = scoreCalculator.determineWinOrLoss(score);
+        String actualResult = resultPrinter.determineResult(gameState, score.get("bulls"), score.get("cows"));
 
         assertEquals(expectedResult, actualResult);
 
@@ -140,9 +154,10 @@ public class ScoreCalculatorTest {
         playerGuess.add(6);
         playerGuess.add(7);
 
-        String expectedResult = "Bulls received: "+0+"\n"+"Cows received: "+1;
-        String actualResult = scoreCalculator.calculateScore(computerNumbers, playerGuess);
-
+        String expectedResult = "Number of Bulls = 0\n"+"Number of Cows = 1";
+        HashMap<String, Integer> score = scoreCalculator.calculateScore(computerNumbers, playerGuess);
+        GameState gameState = scoreCalculator.determineWinOrLoss(score);
+        String actualResult = resultPrinter.determineResult(gameState, score.get("bulls"), score.get("cows"));
 
         assertEquals(expectedResult, actualResult);
 
@@ -164,12 +179,13 @@ public class ScoreCalculatorTest {
         playerGuess.add(4);
         playerGuess.add(5);
 
-        String expectedResult = "Bulls received: "+0+"\n"+"Cows received: "+2;
-        String actualResult = scoreCalculator.calculateScore(computerNumbers, playerGuess);
+        String expectedResult = "Number of Bulls = 0\n"+"Number of Cows = 2";;
 
+        HashMap<String, Integer> score = scoreCalculator.calculateScore(computerNumbers, playerGuess);
+        GameState gameState = scoreCalculator.determineWinOrLoss(score);
+        String actualResult = resultPrinter.determineResult(gameState, score.get("bulls"), score.get("cows"));
 
         assertEquals(expectedResult, actualResult);
-
     }
 
     @Test
@@ -188,9 +204,11 @@ public class ScoreCalculatorTest {
         playerGuess.add(2);
         playerGuess.add(7);
 
-        String expectedResult = "Bulls received: "+1+"\n"+"Cows received: "+1;
-        String actualResult = scoreCalculator.calculateScore(computerNumbers, playerGuess);
+        String expectedResult = "Number of Bulls = 1\n"+"Number of Cows = 1";;
 
+        HashMap<String, Integer> score = scoreCalculator.calculateScore(computerNumbers, playerGuess);
+        GameState gameState = scoreCalculator.determineWinOrLoss(score);
+        String actualResult = resultPrinter.determineResult(gameState, score.get("bulls"), score.get("cows"));
 
         assertEquals(expectedResult, actualResult);
 

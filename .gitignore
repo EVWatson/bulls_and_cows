@@ -1,19 +1,19 @@
 /.idea
-*/.idea
+           */.idea
 
 
-*/.idea/compiler.xml
-*/.idea/encodings.xml
-*/.idea/description.html
-*/.idea/misc.xml
-*/.idea/modules.xml
-*/.idea/workspace.xml
-.idea/**/tasks.xml
-.idea/**/usage.statistics.xml
-.idea/**/dictionaries
-.idea/**/shelf
-.idea/*.iml
+           */.idea/compiler.xml
+           */.idea/encodings.xml
+           */.idea/description.html
+           */.idea/misc.xml
+           */.idea/modules.xml
+           */.idea/workspace.xml
+           .idea/**/tasks.xml
+           .idea/**/usage.statistics.xml
+           .idea/**/dictionaries
+           .idea/**/shelf
+           .idea/*.iml
 
-out/
+           out/
 
-*/.DS_Store
+           */.DS_Store

@@ -1,14 +1,22 @@
 public class ResultPrinter {
 
-    public void printResult(Boolean win, int bulls, int cows){
-        if(win){
-            System.out.println("Well done you won!");
+    public String determineResult(GameState state, Integer bulls, Integer cows){
+        String result;
+        switch (state){
+            case WIN:
+                result = "Well done you won!";
+                break;
+            case LOSE:
+                result = "Bad luck, you lose";
+                break;
+            default:
+                result = "Number of Bulls = " + bulls + "\nNumber of Cows = " + cows;
+                break;
         }
-        if(!win){
-            System.out.println("Bad luck, you lose");
-        }else {
-            System.out.println("Number of Bulls = " + bulls);
-            System.out.println("Number of Cows = " + cows);
-        }
+        return result;
+    }
+
+    public void printResult(String result){
+        System.out.println(result);
     }
 }
