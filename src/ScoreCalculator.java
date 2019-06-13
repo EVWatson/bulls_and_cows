@@ -6,23 +6,27 @@ public class ScoreCalculator {
     private int cows;
 
 
+
     public ScoreCalculator(){
         this.bulls = 0;
         this.cows = 0;
     }
+
+
 
     public String calculateScore(ArrayList<Integer> computerNumbers, ArrayList<Integer> playerGuess){
 
             String finalScore = determineBullsAndCows(computerNumbers, playerGuess);
 
             if(this.bulls == 4){
-                finalScore = "Well done you won!";
+               finalScore = "Well done you won!";
             }
             if(this.bulls == 0 && this.cows == 0){
-                finalScore = "Bad luck you lose";
+                finalScore = "Bad luck, you lose";
             }
         return finalScore;
     }
+
 
     private String determineBullsAndCows(ArrayList<Integer> computerNumbers, ArrayList<Integer> playerGuess){
         for(int digit = 0; digit < playerGuess.size(); digit++) {
@@ -36,5 +40,6 @@ public class ScoreCalculator {
         }
         return "Bulls received: " + this.bulls +"\n"+"Cows received: " + this.cows;
     }
+
 
 }

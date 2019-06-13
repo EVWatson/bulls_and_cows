@@ -47,7 +47,7 @@ public class ScoreCalculatorTest {
         playerGuess.add(5);
         playerGuess.add(5);
 
-        String expectedResult = "Bad luck you lose";
+        String expectedResult = "Bad luck, you lose";
         String actualResult = scoreCalculator.calculateScore(computerNumbers, playerGuess);
 
         assertEquals(expectedResult, actualResult);

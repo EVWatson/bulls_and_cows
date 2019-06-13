@@ -3,6 +3,8 @@ import java.util.Scanner;
 
 public class PlayerInput {
 
+//    validation next - what to do when < or > digits received, or letters?
+
    public ArrayList<Integer> playerGuess = new ArrayList<>();
 
 
@@ -16,14 +18,4 @@ public class PlayerInput {
         return this.playerGuess;
     }
 
-
-    public ArrayList<Integer> playerGuess() {
-        ArrayList<Integer> playerGuess = new ArrayList<>();
-        playerGuess.add(1);
-        playerGuess.add(2);
-        playerGuess.add(3);
-        playerGuess.add(9);
-
-        return playerGuess;
-    }
 }
